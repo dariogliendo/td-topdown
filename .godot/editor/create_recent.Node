@@ -1,0 +1,14 @@
+Node
+Timer
+Label
+CanvasLayer
+CollisionShape2D
+Area2D
+NavigationAgent2D
+NavigationRegion2D
+AnimatedSprite2D
+Sprite2D
+CharacterBody2D
+Node2D
+StaticBody2D
+TileMap

@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4j0dyvchhpqk"]
+
+[ext_resource type="Texture2D" uid="uid://bfgntmalspdis" path="res://assets/enemies/1/D_Walk.png" id="1_mmkjd"]
+[ext_resource type="Script" path="res://enemy_scenes/slime.gd" id="1_o3j1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7py64"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv3ik"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1veno"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tl4g"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32sru"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh3af"]
+atlas = ExtResource("1_mmkjd")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqq66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7py64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv3ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1veno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tl4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32sru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh3af")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3ljh"]
+
+[node name="slime" type="CharacterBody2D"]
+script = ExtResource("1_o3j1t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(2.35417, 2.35417)
+sprite_frames = SubResource("SpriteFrames_kqq66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k3ljh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
