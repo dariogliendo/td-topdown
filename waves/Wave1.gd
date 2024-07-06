@@ -8,6 +8,6 @@ signal wave_started(wave : Node)
 
 func start():
 	wave_started.emit(self)
-	
+
 func end():
 	print("End")

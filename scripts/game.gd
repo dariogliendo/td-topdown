@@ -35,4 +35,6 @@ func _on_enemy_spawning_enemy_spawned(enemy):
 
 
 func _on_torre_arquero_pressed():
-	pass
+	var torre = TORRE_ARQUERO.instantiate()
+	torre.position;
+	add_child(torre)
