@@ -187,6 +187,14 @@ text = "50
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Torre_Arquero" type="Button" parent="HUD"]
+offset_left = 35.0
+offset_top = 545.0
+offset_right = 107.0
+offset_bottom = 618.0
+text = "Torre
+Arquero"
+
 [node name="EnemySpawning" type="Node" parent="."]
 script = ExtResource("4_v1lwo")
 
@@ -199,6 +207,7 @@ script = ExtResource("5_bj0k5")
 [connection signal="ready" from="SpawnPosition" to="." method="_on_spawn_position_ready"]
 [connection signal="body_entered" from="Target" to="." method="_on_target_body_entered"]
 [connection signal="child_entered_tree" from="Target" to="EnemySpawning" method="_on_target_child_entered_tree"]
+[connection signal="pressed" from="HUD/Torre_Arquero" to="." method="_on_torre_arquero_pressed"]
 [connection signal="enemy_spawned" from="EnemySpawning" to="." method="_on_enemy_spawning_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawning/SpawnTimer" to="EnemySpawning" method="_on_spawn_timer_timeout"]
 [connection signal="wave_started" from="Wave1" to="EnemySpawning" method="_on_wave_1_wave_started"]

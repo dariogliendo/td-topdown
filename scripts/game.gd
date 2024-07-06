@@ -1,6 +1,8 @@
 extends Node2D
 class_name GameGlobals;
 
+const TORRE_ARQUERO = preload("res://torres/torre_arquero.tscn")
+
 var player_hp = 50;
 var spawn_point : Vector2
 var active_enemies : Array[Enemy] = []
@@ -30,3 +32,7 @@ func _on_enemy_spawning_enemy_spawned(enemy):
 	active_enemies.append(enemy)
 	if not wave_running:
 		wave_running = true;
+
+
+func _on_torre_arquero_pressed():
+	pass
