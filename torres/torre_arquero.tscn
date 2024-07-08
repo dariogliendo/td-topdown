@@ -1,47 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfnwvh63vj7g0"]
+[gd_scene load_steps=16 format=3 uid="uid://dfnwvh63vj7g0"]
 
 [ext_resource type="Script" path="res://scripts/torre.gd" id="1_mwe82"]
 [ext_resource type="Texture2D" uid="uid://fn42eykjag71" path="res://assets/torre/2 Idle/3.png" id="1_yfsh7"]
 [ext_resource type="Texture2D" uid="uid://cd73gm8n6ntvs" path="res://assets/torre/3 Units/1/S_Idle.png" id="2_6gcr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoxb"]
-size = Vector2(38, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8obu0"]
-atlas = ExtResource("2_6gcr2")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpo23"]
-atlas = ExtResource("2_6gcr2")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tshbl"]
-atlas = ExtResource("2_6gcr2")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ghyl"]
-atlas = ExtResource("2_6gcr2")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ipjrc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8obu0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dpo23")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tshbl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ghyl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+size = Vector2(38, 27.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pyr7"]
 atlas = ExtResource("1_yfsh7")
@@ -79,20 +43,73 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8obu0"]
+atlas = ExtResource("2_6gcr2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpo23"]
+atlas = ExtResource("2_6gcr2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tshbl"]
+atlas = ExtResource("2_6gcr2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ghyl"]
+atlas = ExtResource("2_6gcr2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipjrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8obu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpo23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tshbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ghyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5s6iw"]
+radius = 254.096
+
 [node name="Torre_Arquero" type="CharacterBody2D"]
 script = ExtResource("1_mwe82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 36.5)
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_juoxb")
+metadata/_edit_lock_ = true
 
-[node name="Modelo" type="Node" parent="."]
-
-[node name="Arquero" type="AnimatedSprite2D" parent="Modelo"]
-position = Vector2(0, 4)
-sprite_frames = SubResource("SpriteFrames_ipjrc")
-frame_progress = 0.171199
+[node name="Modelo" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Torre" type="AnimatedSprite2D" parent="Modelo"]
 sprite_frames = SubResource("SpriteFrames_1jr8r")
 frame_progress = 0.608614
+offset = Vector2(0, -11)
+metadata/_edit_lock_ = true
+
+[node name="Arquero" type="AnimatedSprite2D" parent="Modelo"]
+sprite_frames = SubResource("SpriteFrames_ipjrc")
+frame_progress = 0.171199
+offset = Vector2(0, -5)
+metadata/_edit_lock_ = true
+
+[node name="Rango" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Circulo_rango" type="CollisionShape2D" parent="Rango"]
+shape = SubResource("CircleShape2D_5s6iw")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Rango" to="." method="_on_rango_body_entered"]
